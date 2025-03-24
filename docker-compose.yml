@@ -17,14 +17,8 @@ services:
     command: sh -c ' chmod +x ./entrypoint.sh; ./entrypoint.sh & /opt/mssql/bin/sqlservr;'
     ports:
       - "${MSSQL_PORT:-1433}:1433"
-    networks:
-      - env_net
     restart: unless-stopped
 
-networks:
-  env_net:
-    external: true
-    driver: bridge
 
 volumes:
   mssqlsystem: # external: true
